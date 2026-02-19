@@ -1,7 +1,7 @@
-pragma solidity ^0.8.20;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.13;
 
-contract MyERC20 {
-
+contract Delion {
 
     string public name;
     string public symbol;
@@ -16,7 +16,6 @@ contract MyERC20 {
 
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
-
 
 
     constructor(
@@ -81,7 +80,6 @@ contract MyERC20 {
 
         return true;
     }
-
 
 
     function _transfer(
