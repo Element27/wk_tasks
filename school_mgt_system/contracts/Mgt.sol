@@ -1,14 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
-
-interface IDelion {
-    function transferFrom(address _from, address _to, uint256 _value) external returns (bool);
-    function balanceOf(address _owner) external view returns (uint256);
-}
+import "../interfaces/IERC20.sol";
 
 contract Mgt {
     address public admin;
-    IDelion public token;
+    IERC20 public token;
 
     struct Student {
         string name;
@@ -32,7 +28,7 @@ contract Mgt {
 
     constructor(address _tokenAddress) {
         admin = msg.sender;
-        token = IDelion(_tokenAddress);
+        token = IERC20(_tokenAddress);
     }
 
     // 1. Set fees for a specific grade (Admin Only)
@@ -70,9 +66,5 @@ contract Mgt {
 
         s.paidFees += _amount;
         emit PaymentMade(msg.sender, _amount, s.totalFees - s.paidFees);
-    }
-
-    function getDebt(address _student) public view returns (uint256) {
-        return students[_student].totalFees - students[_student].paidFees;
     }
 }

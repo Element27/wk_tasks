@@ -1,22 +1,21 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
-// We pull the key from .env
-const PK = process.env.PRIVATE_KEY;
+/** @type import('hardhat/config').HardhatUserConfig */
 
-// This check helps us debug without showing the key
-if (!PK) {
-  console.warn("⚠️ WARNING: PRIVATE_KEY not found in .env file!");
-}
+
+
+const LISK_PRIVATE_KEY = process.env.LISK_PRIVATE_KEY;
+const LISK_RPC_URL = process.env.LISK_RPC_URL;
+const LISK_CHAIN_ID = Number(process.env.LISK_CHAIN_ID);
 
 module.exports = {
   solidity: "0.8.28",
   networks: {
-    sepolia: {
-      url: process.env.ALCHEMY_API_URL || "",
-      // If PK exists, we put it in the array. 
-      // If not, we leave it empty so Hardhat doesn't crash on startup.
-      accounts: PK ? [PK] : [],
+    lisk_sepolia: {
+      url: LISK_RPC_URL,
+      accounts: LISK_PRIVATE_KEY ? [LISK_PRIVATE_KEY.startsWith("0x") ? LISK_PRIVATE_KEY : `0x${LISK_PRIVATE_KEY}`] : [],
+      chainId: LISK_CHAIN_ID,
     },
   },
 };

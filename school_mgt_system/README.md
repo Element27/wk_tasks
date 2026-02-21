@@ -12,6 +12,5 @@ npx hardhat node
 npx hardhat ignition deploy ./ignition/modules/Lock.js
 ```
 
-
-Deploying with account: 0x7e09Ae5F0fE0894671a79AB4BE386E9B7b3C804b
-Mgt deployed to: 0x7A7Fc314D85D2A5E995748456fC2059bb84419BF
+Mgt#Mgt - 0x5FbDB2315678afecb367f032d93F642f64180aa3
+StaffPayment#StaffPayment - 0x5FbDB2315678afecb367f032d93F642f64180aa3
